@@ -19,6 +19,7 @@ class Button {
         this.btn.classList.add("memory-btn");
         this.btn.style.backgroundColor = color;
         this.btn.textContent = number;
+        this.disableButton();
     }
 
     /* List of methods */
@@ -34,6 +35,14 @@ class Button {
 
     hideNumber() {
         this.btn.textContent = "";
+    }
+
+    enableButton() {
+        this.btn.disabled = false;
+    }
+
+    disableButton() {
+        this.btn.disabled = true;
     }
 
 }
@@ -64,6 +73,11 @@ class Game {
         for (let i = 0; i < this.arrayButtons.length; i++) {
             this.order.push(this.arrayButtons[i].number);
         }
+
+        this.arrayButtons.forEach(b => {
+            b.disableButton();
+            b.btn.onclick = null;
+        });
 
         setTimeout(() => this.mixOrder(n), n * 1000);
     }
@@ -112,6 +126,9 @@ class Game {
                 const top = Math.random() * Math.max(0, maxTop);
                 const left = Math.random() * Math.max(0, maxLeft);
                 btn.setLocation(top, left);
+
+                btn.disableButton();               // ⬅️ still not clickable while scrambling
+                btn.btn.onclick = null;
             });
 
             counter++;
@@ -125,6 +142,7 @@ class Game {
     startGuess() {
         this.arrayButtons.forEach((btn, i) => {
             btn.hideNumber();
+            btn.enableButton();
             btn.btn.onclick = () => this.checkGuess(btn, i);
         })
     }

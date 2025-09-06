@@ -35,3 +35,8 @@ button.memory-btn{
     opacity: 0.5;
     cursor: not-allowed;
 }
+
+.memory-btn:disabled {
+  opacity: 1;           /* keep same look */
+  cursor: default;      /* or not-allowed if you want */
+}
