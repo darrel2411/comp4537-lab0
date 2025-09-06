@@ -1,0 +1,37 @@
+#controls{
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+    font-size: 1rem;
+}
+
+
+#gameBoard {
+    position: relative;         
+    width: 95vw;                 
+    height: 75vh;                
+    margin: 0 auto;              
+    border: 3px solid #444;      
+    border-radius: 8px;
+    background: #f8f8f8;
+    overflow: hidden;    
+    box-sizing: border-box;       
+}
+
+button.memory-btn{
+    height: 5em;
+    width: 10em;
+    margin: 0.5em;
+    font-size: 1.5em;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#startButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
